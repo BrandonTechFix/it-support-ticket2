@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea, .file-input-container input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+        .file-input-container {
+            text-align: left;
+            width: 100%;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Submit an IT Support Ticket</h2>
+        <form action="https://formsubmit.co/brandontechfix@gmail.com" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_captcha" value="false">  
+            <input type="hidden" name="_next" value="https://brandontechfix.github.io/it-support-ticket2/thank-you.html"> 
+
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" placeholder="Describe your issue..." required></textarea>
+
+            <div class="file-input-container">
+                <label for="attachment">Upload a photo or video (max 10MB):</label>
+                <input type="file" id="attachment" name="attachment" accept="image/*,video/*">
+            </div>
+
+            <button type="submit">Submit Ticket</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            var fileInput = document.getElementById("attachment");
+            if (fileInput.files.length > 0) {
+                var fileSize = fileInput.files[0].size; // File size in bytes
+                var maxSize = 10 * 1024 * 1024; // 10MB limit
+
+                if (fileSize > maxSize) {
+                    alert("File size must be 10MB or smaller. Please upload a smaller file.");
+                    e.preventDefault(); // Stop form submission
+                }
+            }
+        });
+    </script>
+</body>
+</html>
